@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h5 class="modal-title">
+    <i class="bi" [ngClass]="isEditing ? 'bi-pencil-square' : 'bi-person-plus'"></i>
+    {{isEditing ? 'Editar' : 'Nuevo'}} Contacto
+  </h5>
+  <button type="button" class="btn-close shadow-sm" aria-label="Close" (click)="activeModal.dismiss()" title="Cerrar"></button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label"><i class="bi bi-person me-1"></i>Nombre *</label>
+      <input type="text" class="form-control shadow-sm" formControlName="name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label"><i class="bi bi-telephone me-1"></i>Teléfono *</label>
+      <input type="text" class="form-control shadow-sm" formControlName="phone"
+             placeholder="Ejemplo: 573001234567">
+      <small class="text-muted d-block mt-1">
+        <i class="bi bi-info-circle me-1"></i>
+        Ingresa el número con el indicativo del país sin el +.
+      </small>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary shadow-sm" (click)="activeModal.dismiss()" title="Cancelar">
+    <i class="bi bi-x-circle me-1"></i>Cancelar
+  </button>
+  <button type="button" class="btn btn-success shadow-sm" (click)="onSubmit()" [disabled]="!contactForm.valid" title="{{isEditing ? 'Actualizar contacto' : 'Crear contacto'}}">
+    <i class="bi" [ngClass]="isEditing ? 'bi-check2-circle me-1' : 'bi-plus-circle me-1'"></i>
+    {{isEditing ? 'Actualizar' : 'Crear'}}
+  </button>
+</div>

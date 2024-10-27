@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="d-flex align-items-center mb-4">
+        <h2 class="mb-0"><i class="bi bi-chat-dots me-2"></i>Mensaje</h2>
+        <small class="text-muted ms-2">
+          <i class="bi bi-info-circle me-1"></i>
+          Para enviar alertas y noticias
+        </small>
+      </div>
+
+      <form [formGroup]="alertForm" (ngSubmit)="onSubmit()" class="rounded">
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-chat-text me-1"></i>Mensaje *</label>
+          <textarea class="form-control" formControlName="message" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-image me-1"></i>URL Media (opcional)</label>
+          <input type="text" class="form-control" formControlName="urlMedia">
+          <small class="text-muted d-block">
+            <i class="bi bi-info-circle me-1"></i>
+            URL de una imagen publica. Se puede usar <a href="https://postimages.org" target="_blank">postimages.org</a> para subir la imagen y obtener el enlace directo.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-telephone me-1"></i>Teléfonos (opcional)</label>
+          <input type="text" class="form-control" formControlName="phones"
+                 placeholder="Ejemplo: 573001234567,573007654321">
+          <small class="text-muted d-block">
+            <i class="bi bi-info-circle me-1"></i>
+            Ingresa los números con el indicativo del país sin el +. Múltiples números deben estar separados por coma.
+          </small>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary shadow" [disabled]="!isMessageValid || !hasPhones">
+            <i class="bi bi-send me-1"></i>Enviar a Teléfonos Específicos
+          </button>
+          <button type="button" class="btn btn-primary shadow" [disabled]="!isMessageValid" (click)="sendToAllContacts()">
+            <i class="bi bi-send-check me-1"></i>Enviar a Todos los Contactos
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
