@@ -7,7 +7,7 @@ import { Alert } from '../interfaces/alert.interface';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:3000/v1';
+  private baseUrl = 'http://y8k8cw04o00kw8scwocssws8.72.60.227.89.sslip.io//v1';
 
   constructor(private http: HttpClient) { }
 
