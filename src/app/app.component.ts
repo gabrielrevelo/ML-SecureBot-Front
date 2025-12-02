@@ -22,7 +22,7 @@ export class AppComponent {
   login(username: string, password: string): void {
     if (this.authService.login(username, password)) {
       console.log('Login exitoso');
-      this.router.navigate(['/contacts']);
+      this.router.navigate(['/whatsapp']);
     } else {
       console.log('Credenciales inválidas');
     }

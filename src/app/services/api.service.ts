@@ -7,7 +7,7 @@ import { Alert } from '../interfaces/alert.interface';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'https://ml-securebot.up.railway.app/v1';
+  private baseUrl = 'http://localhost:3000/v1';
 
   constructor(private http: HttpClient) { }
 
@@ -29,5 +29,13 @@ export class ApiService {
 
   deleteContact(id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/contacts/${id}`);
+  }
+
+  getSessionStatus(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/whatsapp/session-status`);
+  }
+
+  getQRCode(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/whatsapp/qr`);
   }
 }

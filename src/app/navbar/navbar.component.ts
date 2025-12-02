@@ -26,6 +26,7 @@ export class NavbarComponent {
   constructor(public authService: AuthService) {}
 
   navItems: NavItem[] = [
+    { path: '/whatsapp', label: 'WhatsApp' },
     { path: '/contacts', label: 'Contactos' },
     { path: '/alert', label: 'Mensaje' }
   ];
